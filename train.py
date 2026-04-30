@@ -7,7 +7,9 @@ train_dir = "dataset/train"
 # Image preprocessing
 datagen = ImageDataGenerator(
     rescale=1./255,
-    validation_split=0.2
+    rotation_range=20,
+    zoom_range=0.2,
+    horizontal_flip=true
 )
 
 train_data = datagen.flow_from_directory(

@@ -2,15 +2,22 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # Dataset path
-train_dir = "dataset/train"
+train_dir = r'C:\Project\computer_vision_zalima\dataset\train'
+validation_dir= r'C:\Project\computer_vision_zalima\dataset\validation'
 
 # Image preprocessing
 datagen = ImageDataGenerator(
     rescale=1./255,
+    validation_split=0.2
+)
+
+train_datagen=ImageDataGenerator(
+    rescale=1./255,
     rotation_range=20,
     zoom_range=0.2,
-    horizontal_flip=true
+    horizontal_flip=True
 )
+
 
 train_data = datagen.flow_from_directory(
     train_dir,
@@ -19,6 +26,7 @@ train_data = datagen.flow_from_directory(
     class_mode='binary',
     subset='training'
 )
+
 
 val_data = datagen.flow_from_directory(
     train_dir,
